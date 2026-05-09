@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ecris ton message</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <a href="/" class="back-link">← Retour</a>
+    <h1>Ecris ton message</h1>
+    <p>Tu ecris en tant que <strong><%= nom %></strong> <%= isAnonyme ? '(anonyme)' : '' %></p>
+  </header>
+
+  <form action="/save" method="POST">
+    <% options.forEach(option => { %>
+      <div class="message-block">
+        <label><strong><%= option === 'voeux' ? 'Voeux' : option === 'conseil' ? 'Conseil' : 'Reproche' %></strong></label>
+        <textarea name="<%= option %>" rows="4" placeholder="Ecris ici..." required></textarea>
+      </div>
+    <% }); %>
+    <button type="submit" class="btn-primary">Envoyer</button>
+  </form>
+</div>
+</body>
+</html>
